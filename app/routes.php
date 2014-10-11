@@ -21,6 +21,8 @@ Route::get('/', 'HomeController@dashboard');
  * User
  */
 Route::get('/users', 'UserController@getUsers');
+Route::get('/user/{id}', 'UserController@getUser');
+Route::post('/user', 'UserController@postUser');
 
 
 /*

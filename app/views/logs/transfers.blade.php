@@ -16,29 +16,31 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <table class="table table-bordered table-condensed">
-                    <thead>
-                        <tr>
-                            <th>User</th>
-                            <th>File</th>
-                            <th>Size</th>
-                            <th>Type</th>
-                            <th>When</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($transfers as $transfer)
-                        <tr>
-                            <td>{{ $transfer->userid }}</td>
-                            <td>{{ $transfer->file }}</td>
-                            <td>{{ $transfer->size }}</td>
-                            <td>{{ $transfer->type }}</td>
-                            <td>{{ $transfer->when }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                {{ $transfers->links(); }}
+                <div class=" table-responsive">
+                    <table class="table table-bordered table-condensed">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>File</th>
+                                <th>Size</th>
+                                <th>Type</th>
+                                <th>When</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($transfers as $transfer)
+                            <tr>
+                                <td>{{ $transfer->userid }}</td>
+                                <td>{{ $transfer->file }}</td>
+                                <td>{{ $transfer->size }}</td>
+                                <td>{{ $transfer->type }}</td>
+                                <td>{{ $transfer->when }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $transfers->links(); }}
+                </div>
             </div>
         </div>
         <!-- /.row -->

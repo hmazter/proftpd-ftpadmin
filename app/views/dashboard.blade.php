@@ -37,7 +37,7 @@
                         <a href="{{ action('LogController@getTransfers') }}" class="pull-right">View Details <i class="fa fa-arrow-circle-right"></i></a>
                         <h3 class="panel-title">Last Transfers</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body table-responsive">
                         <table class="table table-bordered table-condensed">
                             <thead>
                                 <tr>
@@ -75,7 +75,7 @@
                         <a href="{{ action('LogController@getLogins') }}" class="pull-right">View Details <i class="fa fa-arrow-circle-right"></i></a>
                         <h3 class="panel-title">Last Logins</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body table-responsive">
                         <table class="table table-bordered table-condensed">
                             <thead>
                                 <tr>

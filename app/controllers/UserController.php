@@ -9,8 +9,28 @@ class UserController extends BaseController {
     public function getUsers()
     {
         $users = User::all();
+        $groups = Group::all();
 
-        return View::make('users')->with('users', $users);
+        return View::make('users.users')->with(
+            array(
+                'users' => $users,
+                'groups' => $groups
+            )
+        );
     }
 
+    public function getUser($id = 0)
+    {
+        $user = User::find($id);
+        return Response::json($user);
+    }
+
+    public function postUser()
+    {
+        $id = Input::get('id');
+        $fields = Input::only(array('userid', 'userid', 'gid', 'homedir', 'shell'));
+        $user = User::updateOrCreate(array('id' => $id), $fields);
+
+        return Response::json(true);
+    }
 }

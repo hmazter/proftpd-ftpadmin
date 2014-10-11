@@ -99,8 +99,8 @@
                     @foreach($menu as $item)
                         @if(isset($item['childs']))
                             <li>
-                                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw {{ $item['icon']; }}"></i> {{ $item['title']; }} <i class="fa fa-fw fa-caret-down"></i></a>
-                                <ul id="demo" class="collapse">
+                                <a href="javascript:;" data-toggle="collapse" data-target="#{{ str_replace(' ', '', strtolower($item['title'])); }}"><i class="fa fa-fw {{ $item['icon']; }}"></i> {{ $item['title']; }} <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="{{ str_replace(' ', '', strtolower($item['title'])); }}" class="collapse">
                                     @foreach($item['childs'] as $child)
                                         <li>
                                             <a href="{{ $child['url']; }}">{{ $child['title']; }}</a>
