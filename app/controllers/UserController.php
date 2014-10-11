@@ -25,12 +25,19 @@ class UserController extends BaseController {
         return Response::json($user);
     }
 
-    public function postUser()
+    public function saveUser()
     {
         $id = Input::get('id');
         $fields = Input::only(array('userid', 'userid', 'gid', 'homedir', 'shell'));
         $user = User::updateOrCreate(array('id' => $id), $fields);
 
+        return Response::json(true);
+    }
+
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        $user->delete();
         return Response::json(true);
     }
 }

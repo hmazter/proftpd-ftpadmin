@@ -22,7 +22,8 @@ Route::get('/', 'HomeController@dashboard');
  */
 Route::get('/users', 'UserController@getUsers');
 Route::get('/user/{id}', 'UserController@getUser');
-Route::post('/user', 'UserController@postUser');
+Route::post('/user/save', 'UserController@saveUser');
+Route::post('/user/delete/{id}', 'UserController@deleteUser');
 
 
 /*

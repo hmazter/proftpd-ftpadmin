@@ -34,14 +34,14 @@
                         </thead>
                         <tbody>
                             @foreach($users as $user)
-                            <tr>
+                            <tr id="row-{{ $user->id }}">
                                 <td>{{ $user->userid }}</td>
                                 <td>{{ $user->group->groupname }}</td>
                                 <td>{{ $user->totalTransferFormated() }}</td>
                                 <td>{{ $user->last_accessed }}</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-default btn-edit" data-id="{{ $user->id }}">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="{{ $user->id }}">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -94,9 +94,25 @@
     }
 
     $(document).ready(function(){
+        $(document).on('click', '.btn-delete', function(e){
+            e.preventDefault();
+            console.log('onClick delete');
+            var id = $(this).data('id');
+            $.ajax({
+                type: "POST",
+                url: '/user/delete/'+id,
+                dataType: 'json',
+                success: function(response){
+                    console.log(response);
+                    console.log('callback');
+                    $('#row-'+id).remove();
+                }
+            });
+        });
+
         $(document).on('click', '.btn-edit', function(e){
             e.preventDefault();
-            console.log('on click');
+            console.log('onClick edit');
             show_dialog($(this).data('id'));
         });
 
@@ -114,7 +130,7 @@
             // save data
             $.ajax({
                 type: "POST",
-                url: '/user',
+                url: '/user/save',
                 data: data,
                 dataType: 'json',
                 success: function(response){
