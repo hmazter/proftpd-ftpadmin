@@ -14,14 +14,21 @@
                     </small>
                 </h4>
             </div>
-            <div class="modal-body">
-                <form class="form-horizontal" role="form">
+            <form class="form-horizontal" id="user-form" role="form">
+                <div class="modal-body">
                     <input type="hidden" name="id" id="id">
 
                     <div class="form-group">
                         <label for="userid" class="col-sm-2 control-label">Username</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="userid" id="userid" placeholder="Username">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwd" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="passwd" id="passwd" placeholder="Password"><small>Leave blank to not change</small>
                         </div>
                     </div>
 
@@ -49,18 +56,17 @@
                             </select>
                         </div>
                     </div>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary btn-save">
-                    Save changes
-                    <span class="saving collapse">
-                        <i class="fa fa-spinner fa-spin"></i>
-                    </span>
-                </button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-save">
+                        Save changes
+                        <span class="saving collapse">
+                            <i class="fa fa-spinner fa-spin"></i>
+                        </span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

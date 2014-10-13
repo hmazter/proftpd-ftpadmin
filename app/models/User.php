@@ -4,7 +4,7 @@ class User extends Eloquent  {
 
 	protected $table = 'users';
 	protected $hidden = array('passwd');
-    protected $fillable = array('userid', 'gid', 'homedir', 'shell');
+    protected $fillable = array('userid', 'gid', 'homedir', 'shell', 'passwd');
 
     public function group() {
         return $this->hasOne('Group', 'gid', 'gid');

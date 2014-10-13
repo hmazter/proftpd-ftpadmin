@@ -29,6 +29,9 @@ class UserController extends BaseController {
     {
         $id = Input::get('id');
         $fields = Input::only(array('userid', 'userid', 'gid', 'homedir', 'shell'));
+        if(Input::has('passwd')){
+            $fields['passwd'] = crypt(Input::get('passwd'));
+        }
         $user = User::updateOrCreate(array('id' => $id), $fields);
 
         return Response::json(true);
@@ -36,7 +39,7 @@ class UserController extends BaseController {
 
     public function deleteUser($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $user->delete();
         return Response::json(true);
     }

@@ -15,12 +15,13 @@
         <!-- /.row -->
 
         <div class="row">
+            <div class="col-lg-12 action-row">
+                <button class="btn btn-default btn-edit"><i class="fa fa-plus-square-o fa-lg"></i> Add new User</button>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-lg-12">
-
-                <div>
-                    <button class="btn btn-default btn-edit">Add new User</button>
-                </div>
-
                 <div id="table-wrapper" class="table-responsive">
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
@@ -40,8 +41,8 @@
                                 <td>{{ $user->totalTransferFormated() }}</td>
                                 <td>{{ $user->last_accessed }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-default btn-edit" data-id="{{ $user->id }}">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="{{ $user->id }}">Delete</a>
+                                    <a href="#" class="btn btn-sm btn-default btn-edit" data-id="{{ $user->id }}"><i class="fa fa-pencil-square-o fa-lg"></i> Edit</a>
+                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="{{ $user->id }}"><i class="fa fa-trash-o fa-lg"></i> Delete</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -116,12 +117,7 @@
             show_dialog($(this).data('id'));
         });
 
-        $('.btn-save').click(function(e){
-            console.log('onClick save');
-            $('.modal form').submit();
-        });
-
-        $('.modal form').submit(function(e) {
+        $('#user-form').submit(function(e) {
             e.preventDefault();
             $('.modal .saving').show();
             var data = $('.modal form').serialize();
