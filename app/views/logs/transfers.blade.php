@@ -23,7 +23,7 @@
                                 <th>User</th>
                                 <th>File</th>
                                 <th>Size</th>
-                                <th>Type</th>
+                                <th>Duration</th>
                                 <th>When</th>
                             </tr>
                         </thead>
@@ -31,9 +31,12 @@
                             @foreach($transfers as $transfer)
                             <tr>
                                 <td>{{ $transfer->userid }}</td>
-                                <td>{{ $transfer->file }}</td>
-                                <td>{{ $transfer->size }}</td>
-                                <td>{{ $transfer->type }}</td>
+                                <td>
+                                    <i class="fa {{ $transfer->type == 'STOR' ? 'fa-upload color-upload' : 'fa-download color-download' }} fa-fw"></i>
+                                    {{ $transfer->file }}
+                                </td>
+                                <td>{{ $transfer->sizeFormatted() }}</td>
+                                <td>{{ $transfer->duration }} sec</td>
                                 <td>{{ $transfer->when }}</td>
                             </tr>
                             @endforeach

@@ -12,7 +12,7 @@ class User extends Eloquent  {
 
     public function totalTransferFormated()
     {
-        $units = array('b', 'kb', 'mb', 'gb', 'tb');
+        $units = array('B', 'KiB', 'MiB', 'GiB', 'TiB');
         $unit_count = 0;
         $total = Transfer::where('userid', '=', $this->userid)->sum('size');
         while ($total > 1024) {
