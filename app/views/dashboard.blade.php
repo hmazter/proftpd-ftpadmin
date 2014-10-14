@@ -135,8 +135,8 @@ var upload   = [],
     download = [];
 
     @foreach($transferData as $date => $types)
-        upload.push([{{ strtotime($date)*1000 }}, {{ isset($types['STOR'])? number_format($types['STOR']/(1024*1024), 3): 0 }}]);
-        download.push([{{ strtotime($date)*1000 }}, {{ isset($types['RETR'])? number_format($types['RETR']/(1024*1024), 3): 0 }}]);
+        upload.push([{{ strtotime($date)*1000 }}, {{ isset($types['STOR'])? number_format($types['STOR']/(1024*1024), 3, '.', ''): 0 }}]);
+        download.push([{{ strtotime($date)*1000 }}, {{ isset($types['RETR'])? number_format($types['RETR']/(1024*1024), 3, '.', ''): 0 }}]);
     @endforeach
 
 // Flot Line Chart with Tooltips
@@ -157,7 +157,10 @@ $(document).ready(function() {
                 hoverable: true //IMPORTANT! this is needed for tooltip to work
             },
             yaxis: {
-                min: 0
+                min: 0,
+                tickFormatter: function (val, axis) {
+                    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                }
             },
             xaxis: {
                 mode: "time",
