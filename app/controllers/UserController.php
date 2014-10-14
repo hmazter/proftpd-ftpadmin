@@ -29,11 +29,10 @@ class UserController extends BaseController {
     {
         $id = Input::get('id');
         $fields = Input::only(array('userid', 'userid', 'gid', 'homedir', 'shell'));
-        if(Input::has('passwd')){
-            $fields['passwd'] = crypt(Input::get('passwd'));
-        }
         $user = User::updateOrCreate(array('id' => $id), $fields);
-
+        if(Input::has('passwd')) {      // update stored password with mysql password function
+            DB::update('UPDATE users SET passwd = PASSWORD(?) WHERE id=?', array(Input::get('passwd'), $user->id));
+        }
         return Response::json(true);
     }
 
