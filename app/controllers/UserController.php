@@ -42,4 +42,14 @@ class UserController extends BaseController {
         $user->delete();
         return Response::json(true);
     }
+
+    public function online()
+    {
+        return View::make('users.online')->with(
+            array(
+                'online'    => FTPUtils::count(),
+                'users'     => FTPUtils::who()
+            )
+        );
+    }
 }

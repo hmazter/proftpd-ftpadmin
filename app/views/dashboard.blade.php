@@ -8,8 +8,33 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Dashboard <small>Statistics Overview</small>
+                    Dashboard
                 </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-users fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge" id="online-count">?</div>
+                                <div>
+                                    <a href="{{ action('UserController@online') }}" style="color: #fff;">
+                                        Online users! <i class="fa fa-arrow-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <!-- /.row -->
@@ -125,70 +150,16 @@
     <!-- /.container-fluid -->
 @endsection
 
-
 @section('javascript')
-
-<script src="js/plugins/flot/jquery.flot.js"></script>
-<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script>
-var upload   = [],
-    download = [];
-
-    @foreach($transferData as $date => $types)
-        upload.push([{{ strtotime($date)*1000 }}, {{ isset($types['STOR'])? number_format($types['STOR']/(1024*1024), 3, '.', ''): 0 }}]);
-        download.push([{{ strtotime($date)*1000 }}, {{ isset($types['RETR'])? number_format($types['RETR']/(1024*1024), 3, '.', ''): 0 }}]);
-    @endforeach
-
-// Flot Line Chart with Tooltips
-$(document).ready(function() {
-    plot();
-
-    function plot() {
-        var options = {
-            series: {
-                lines: {
-                    show: true
-                },
-                points: {
-                    show: true
-                }
-            },
-            grid: {
-                hoverable: true //IMPORTANT! this is needed for tooltip to work
-            },
-            yaxis: {
-                min: 0,
-                tickFormatter: function (val, axis) {
-                    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                }
-            },
-            xaxis: {
-                mode: "time",
-                timeformat: "%y-%m-%d"
-            },
-             tooltip: true,
-             tooltipOpts: {
-                 content: "%s %x was %y",
-                 shifts: {
-                     x: -60,
-                     y: 25
-                 }
-             }
-        };
-
-        var plotObj = $.plot(
-            $("#flot-transfer-chart"),
-            [{
-                data: upload,
-                label: "Upload (MiB)"
-            }, {
-                data: download,
-                label: "Download (MiB)"
-            }],
-            options
-        );
-    }
-});
-</script>
-
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+    var upload   = [],
+        download = [];
+        @foreach($transferData as $date => $types)
+            upload.push([{{ strtotime($date)*1000 }}, {{ isset($types['STOR'])? number_format($types['STOR']/(1024*1024), 3, '.', ''): 0 }}]);
+            download.push([{{ strtotime($date)*1000 }}, {{ isset($types['RETR'])? number_format($types['RETR']/(1024*1024), 3, '.', ''): 0 }}]);
+        @endforeach
+    </script>
 @endsection

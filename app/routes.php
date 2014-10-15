@@ -24,6 +24,7 @@ Route::get('/users', 'UserController@getUsers');
 Route::get('/user/{id}', 'UserController@getUser');
 Route::post('/user/save', 'UserController@saveUser');
 Route::post('/user/delete/{id}', 'UserController@deleteUser');
+Route::get('/users/online', 'UserController@online');
 
 
 /*
@@ -39,6 +40,12 @@ Route::get('/logs', 'LogController@getLogs');
 Route::get('/logs/transfers', 'LogController@getTransfers');
 Route::get('/logs/logins', 'LogController@getLogins');
 
+
+/*
+ * API
+ */
+Route::get('api/online-count', 'ApiController@getOnlineCount');
+Route::get('api/online-list', 'ApiController@getOnlineList');
 
 /*
  * Webuser
