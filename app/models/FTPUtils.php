@@ -47,7 +47,7 @@ class FTPUtils {
 
         if($return == 0) {
             for ($i = 1; $i < count($output) - 1; $i++) {
-                $row = $output[$i];
+                $row = trim($output[$i]);
                 $row = str_replace(array('[', ']'), '', $row);  // remove [ and ]
                 $row = preg_replace('!\s+!', ' ', $row);        // replace multiple spaces with single
                 $tokens = $tokens = explode(' ', $row);
