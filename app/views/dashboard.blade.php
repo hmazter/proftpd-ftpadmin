@@ -45,7 +45,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <a href="#transferChart" data-toggle="collapse">
-                                <i class="fa fa-bar-chart-o"></i> Transfer data amount
+                                <i class="fa fa-line-chart"></i> Transfer data amount
                             </a>
                         </h3>
                     </div>
@@ -154,6 +154,7 @@
     <script src="js/plugins/flot/jquery.flot.js"></script>
     <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
     <script src="js/dashboard.js"></script>
+    <script src="js/charts.js"></script>
     <script>
     var upload   = [],
         download = [];

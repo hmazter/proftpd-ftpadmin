@@ -15,6 +15,7 @@
  * Home
  */
 Route::get('/', 'HomeController@dashboard');
+Route::get('/charts', 'HomeController@charts');
 
 
 /*

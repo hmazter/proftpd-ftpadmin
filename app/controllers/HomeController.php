@@ -21,4 +21,17 @@ class HomeController extends BaseController {
         );
     }
 
+    public function charts()
+    {
+        $transferData = Transfer::getStructuredAmountData(30);
+        $logins = Login::getStructuredLoginData(30);
+
+        return View::make('charts')->with(
+            array(
+                'transferData'  => $transferData,
+                'logins'        => $logins
+            )
+        );
+    }
+
 }
