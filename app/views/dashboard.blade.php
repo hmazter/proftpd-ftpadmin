@@ -15,8 +15,30 @@
         <!-- /.row -->
 
         <div class="row">
-            <div class="col-lg-3 col-md-6">
 
+            <!-- Server status -->
+            <div class="col-lg-3 col-md-6">
+                <div class="panel {{ $serverStatus ? 'panel-green' : 'panel-red' }}">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-plug fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div>
+                                    Server is
+                                </div>
+                                <div class="huge">
+                                    {{ $serverStatus ? 'Online' : 'Offline' }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -34,8 +56,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
         <!-- /.row -->
 

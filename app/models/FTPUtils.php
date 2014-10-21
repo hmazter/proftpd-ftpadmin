@@ -62,4 +62,21 @@ class FTPUtils {
 
         return $response;
     }
+
+    /**
+     * Check if the server is online and accepting connections (using ps)
+     *
+     * @return bool     true if server is online, false otherwise
+     */
+    public static function acceptingConnections()
+    {
+        $output = array();
+        exec('ps aux | grep proftpd', $output);
+        foreach ($output as $row) {
+            if(stripos($row, 'proftpd: (accepting connections)') !== false){
+                return true;
+            }
+        }
+        return false;
+    }
 } 

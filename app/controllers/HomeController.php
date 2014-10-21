@@ -16,7 +16,8 @@ class HomeController extends BaseController {
             array(
                 'transferData' => $transferData,
                 'logins'       => $logins,
-                'transfers'    => $transfers
+                'transfers'    => $transfers,
+                'serverStatus' => FTPUtils::acceptingConnections()
             )
         );
     }
