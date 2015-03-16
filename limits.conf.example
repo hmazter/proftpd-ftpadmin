@@ -1,0 +1,19 @@
+<Directory /ftp>
+    <Limit ALL>
+        DenyAll
+    </Limit>
+
+    <Limit DIRS>
+        AllowGroup OWNER
+        AllowGroup LEECHER
+    </Limit>
+
+    <Limit READ>
+        AllowGroup OWNER
+        AllowGroup LEECHER
+    </Limit>
+
+    <Limit WRITE>
+        AllowGroup OWNER
+    </Limit>
+</Directory>
